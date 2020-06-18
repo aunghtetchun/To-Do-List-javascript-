@@ -59,18 +59,21 @@
 })();
 function editFunction(edit_id) {
     let parent_edit=document.getElementById(edit_id).parentElement.parentElement;
-    window.edit=parent_edit.children;
-    let old_title=edit[1].innerHTML;
-    let old_from=edit[2].innerHTML.substr(0,5);
-    let old_to=edit[3].innerHTML.substr(0,5);
-    edit[1].innerHTML="<input type=\"text\" class=\"form-control title\" id=\"exampleInputEmail1\" onblur='update_data()' aria-describedby=\"emailHelp\" value= required>\n";
-    edit[1].firstElementChild.setAttribute("value",old_title);
-    edit[2].innerHTML="<input type=\"time\" class=\"form-control from\" id=\"from\" name=\"from\" onblur='update_data()' min=\"01:00\" max=\"24:00\" required>\n";
-    edit[2].firstElementChild.setAttribute("value",old_from);
-    edit[3].innerHTML="<input type=\"time\" class=\"form-control to\" id=\"to\" name=\"to\" onblur='update_data()' min=\"01:00\" max=\"24:00\" required>\n";
-    edit[3].firstElementChild.setAttribute("value",old_to);
-
-
+    let check=parent_edit.firstElementChild.firstElementChild;
+    if (check.checked==true){
+        alert("YOu finish it. You can't edit.")
+    }else{
+        window.edit=parent_edit.children;
+        let old_title=edit[1].innerHTML;
+        let old_from=edit[2].innerHTML.substr(0,5);
+        let old_to=edit[3].innerHTML.substr(0,5);
+        edit[1].innerHTML="<input type=\"text\" class=\"form-control title\" id=\"exampleInputEmail1\" onblur='update_data()' aria-describedby=\"emailHelp\" value= required>\n";
+        edit[1].firstElementChild.setAttribute("value",old_title);
+        edit[2].innerHTML="<input type=\"time\" class=\"form-control from\" id=\"from\" name=\"from\" onblur='update_data()' min=\"01:00\" max=\"24:00\" required>\n";
+        edit[2].firstElementChild.setAttribute("value",old_from);
+        edit[3].innerHTML="<input type=\"time\" class=\"form-control to\" id=\"to\" name=\"to\" onblur='update_data()' min=\"01:00\" max=\"24:00\" required>\n";
+        edit[3].firstElementChild.setAttribute("value",old_to);
+    }
 
 }
 function update_data() {
